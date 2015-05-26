@@ -42,6 +42,8 @@ module SongsHelper
       return generate_tag directive[0], directive[1], "h5"
     when "comment", "c"
       return generate_comment_tag directive[1], "h2"
+    when "key", "k"
+      return generate_comment_tag directive[1], "h6"
     else
       puts "You gave me  -- I have no idea what to do with that."
     end

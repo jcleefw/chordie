@@ -8,6 +8,7 @@ class SongsController < ApplicationController
     if !params["content"].nil?
       html = ""
       content = params["content"].split /\n/;
+
       chord_regex = /\[(([A-G]|[ABDEG](♭|b)|[AGCDF](♯|#)?)(maj|min|[Mm+°|])?6?(aug|d[io]m|ø)?7?(\/?((([A-G]|[ABDEG](♭|b)|[AGCDF](♯|#)?)(maj|min|[Mm+°|])?6?(aug|d[io]m|ø)?7?)?)))\]/;
       directives_regex = /\{.*?\}/
       content.map do |line|
@@ -20,11 +21,17 @@ class SongsController < ApplicationController
         elsif directives_found.size>0
           html += directives_to_html directives_found
         else
-          html += line
+          html += "<p>#{line}</p>"
         end
       end
 
       render :json => html
+    end
+  end
+
+  def save
+    if !params["chordpro"].nil?
+
     end
   end
 

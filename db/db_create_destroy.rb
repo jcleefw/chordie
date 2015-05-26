@@ -20,6 +20,7 @@
 # rails migrate add_badge_to_talk badge:string
 
 rails g model Song title:string artist:string data:text
+rails g migration add_html_to_songs html:string
 
 # Destroy models
 # rails destroy model Talk

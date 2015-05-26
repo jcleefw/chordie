@@ -22,3 +22,4 @@ Implementing Chordpro Song File Format into website to generate HTML
     - comment: c:
 
 # Wishlist Features
+soc

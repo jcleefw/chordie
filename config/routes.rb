@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :songs
   # -----------------------------
   post 'songs/conversion' => 'songs#chp_html_conversion'
+  post 'songs/save' => 'songs#save'
 
 
 end
