@@ -1,0 +1,49 @@
+<h1>Songs Formatter</h1>
+
+<main class="song_formatter">
+  <section class="pre_conversion">
+    <h1>Chord Pro Formats:</h1>
+    <textarea name="chordpro" id="" cols="30" rows="10">The [C]sun comes [G]up
+It's a [D]new day [Em]dawning
+[C]It's time to [G]sing Your [D]song [Em]again
+What[C]ever may [G]pass
+And what[D]ever lies be[Em]fore me
+[C]Let me be [G]singing ?
+When the [D]evening [G]comes
+    </textarea>
+    <button id="convert">Convert</button>
+  </section>
+
+  <section class="converted">
+    <div class="output">
+      <h1>Output Conversion:</h1>
+    </div>
+  </section>
+</main>
+
+<script>
+  $('section.pre_conversion').on('click', 'button', function() {
+    $content = $(this).siblings('textarea').html();
+    $contentArray = $content.split('\n');
+    var result = $.map($contentArray, function(val) {
+      //var regex = /\[(.*?)\]/g;
+      var op_regex = /\[/g;
+      var close_regex = /\]/g;
+      val = val.replace(op_regex, '<code data-chordname="" class="styled">');
+      val = val.replace(close_regex, '</code>');
+
+      //return $("p").add(val);
+      return $('<p>').addClass('line').append(val);
+    });
+    $pre = $('<pre>').append(result);
+    $('.output').append($pre);
+
+    //console.log($('.output').find('code'));
+    $.each($('.output').find('code'), function() {
+      //console.log();
+      chord = $(this).html();
+      $(this).attr('data-chordname', chord) ;
+    });
+  });
+
+</script>

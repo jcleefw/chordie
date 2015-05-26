@@ -1,0 +1,31 @@
+body{
+  background-color:$light-gray;
+  font-family: "Montserrat", Helvetica, Arial, san-serif;
+}
+
+.main_container{
+  margin: 0 auto;
+}
+main{
+  @include outer-container;
+
+}
+
+.song_formatter{
+  $visual-grid: true;
+  section {
+    @include span-columns(6);
+  }
+
+  textarea {
+    // flex-direction: column;
+    // display: flex;
+    width: 100%;
+    @include align-items(stretch);
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+  }
+}
+
+
