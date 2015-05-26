@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
-
+  include SongsHelper
   def show
-    #binding.pry
+    render 'songs/conversion'
   end
 
   def chp_html_conversion
@@ -14,14 +14,13 @@ class SongsController < ApplicationController
 
         chords_found = line.scan(chord_regex)
 
-        if chords_found
-
-          chords = chords_found.map do |chord|
-
-            line = line.gsub("[#{chord[0]}]", "<code class='chord' data-chordname='#{chord[0]}'>#{chord[0]}</code>")
-          end
-          html += "<p class='line'>#{line}</p>"
-
+        directives_found = line.scan(directives_regex)
+        if chords_found.size > 0
+          html += chords_to_html chords_found,line
+        elsif directives_found.size>0
+          html += directives_to_html directives_found
+        else
+          html += line
         end
       end
 
