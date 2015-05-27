@@ -1,9 +1,9 @@
 #logo{
   margin:auto;
   position: relative;
-  top: 25%;
   padding: 0 2rem;
   color: $white;
+  font-weight:bold;
   @include span-columns(3);
 }
 
@@ -23,3 +23,4 @@ nav.primary_nav {
     padding: 0 1rem;
   }
 }
+

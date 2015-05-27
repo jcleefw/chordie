@@ -7,12 +7,16 @@ class SongsController < ApplicationController
   end
 
   def show
-    #render 'songs/conversion'
+
     @song = Song.find params["id"]
+    @html = @song.html
+  end
+
+  def new
+    render 'songs/conversion'
   end
 
   def save
-
     @song = Song.new(get_song_adding_params)
     @song.save
 

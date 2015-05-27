@@ -70,7 +70,11 @@ module SongsHelper
 
   def generate_tag title, content, wrapper
     #binding.pry
-    "<#{wrapper} class='#{title}'>#{content}</#{wrapper}>"
+    if title=="artist"
+      "<#{wrapper} class='#{title}'>by #{content}</#{wrapper}>"
+    else
+      "<#{wrapper} class='#{title}'>#{content}</#{wrapper}>"
+    end
   end
 
   def generate_comment_tag content, wrapper
@@ -79,8 +83,9 @@ module SongsHelper
 
     #create type for comment
     type = content.split[0].downcase
-    #binding.pry
+
     "<#{wrapper} id='#{id}' class='comment #{type}'>#{content}</#{wrapper}>"
+
   end
 
   def generate_wrapper_tag type, wrapper, type_case

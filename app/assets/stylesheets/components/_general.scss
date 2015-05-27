@@ -1,21 +1,22 @@
 body{
-  background-color:$light-gray;
-  font-family: "Montserrat", Helvetica, Arial, san-serif;
+  background-color:$white;
+  font-family: "Montserrat", Helvetica, Arial, san-serif !important;
   margin: 0;
   @include span-columns(12);
 }
 header{
   height: 50px;
   @include span-columns(12);
-  background-color: #47735c;
+  background-color: $main-purple;
+  line-height: 3rem;
 }
 
 .main_container{
-  margin: 0 auto;
+  @include outer-container;
 }
 main{
-  @include outer-container;
-
+  padding: 2rem;
+  margin: 3rem 0;
 }
 
 .song_formatter{

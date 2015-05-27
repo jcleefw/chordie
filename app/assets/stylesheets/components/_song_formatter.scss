@@ -1,6 +1,13 @@
 pre{
   font-family:inherit;
 }
+
+.html_converted{
+  .soh, .start-of-header{
+    padding:0;
+  }
+}
+
 .line{
   position:relative;
 }
@@ -16,7 +23,40 @@ pre{
 .chord{
   position: absolute;
   top:-20px;
-  color:plum;
+  color:rgb(253, 118, 118);
   font-weight: bold;
   font-family:inherit;
 }
+
+.soh, .start-of-header {
+  color: $dark-purple;
+  //padding: 2rem 0 0;
+  .title{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .artist{
+    font-size: .9rem;
+    font-weight: normal;
+    color: $light-purple;
+    margin:0;
+    padding-top: 0.4375rem;
+  }
+}
+
+.comment {
+  font-size: 1.1rem;
+  color: $yellow;
+  padding: 1rem 0;
+}
+
+.line{
+  color: $dark-purple;
+  padding: 0.3125rem;
+}
+.no-chord{
+  padding:0 0.3125rem;
+  margin:0;
+}
+

@@ -1,14 +1,18 @@
 /* plugins */
 
 @import "bourbon";
+@import "base/base";
 @import "neat";
 
 
 /* Customize styles */
 @import "components/variable";
 @import "components/general";
-@import "components/song_formatter";
 @import "components/header";
+
+@import "components/song_formatter";
+@import "components/song_show";
+
 
 @import "songs";
 

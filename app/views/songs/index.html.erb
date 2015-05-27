@@ -1,7 +1,12 @@
-<h1>Song index</h1>
-<ul>
+
+<main class="song_list">
+  <h1>Song index</h1>
+  <ul>
   <% @songs.each do |song| %>
-    <%= link_to song.title, "songs/#{song.id}" %>
+    <%#= link_to song.title, "songs/#{song.id}" %>
+    <a href="songs/<%= song.id %>"><li><%= song.title %></li></a>
   <% end %>
 </ul>
+</main>
+
 

@@ -42,7 +42,7 @@ module SongsUtils
               #convert directives into html
               html += directives_to_html directives_found
             else
-              html += "<p>#{line}</p>"
+              html += "<p class='line no-chord'>#{line}</p>"
             end
           end
         end #end of line map
