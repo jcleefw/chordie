@@ -6,13 +6,63 @@
     <!-- <div class="button">
       button
     </div> -->
-    <button class="toggle_format">Show Both</button>
+    <button id="toggleFormat" data-state="hideChords">Hide Chords</button>
   </div>
 
 </main>
 
 <script>
 
+  var buttonState = { hideChords: "Hide Chords", hideLyrics: "Hide Lyrics", both:"Show Both"};
+
+  var ajaxToggleFormat = function(state) {
+      $.ajax({
+        url: '/songs/show',
+        method: 'post',
+        // dataType: "json",
+        data: { state: currentState }
+      }).done(function(data){
+        console.log(data);
+
+      }).fail(function() {
+        console.log('Sorry, toggle failed');
+      });
+  };
+
+  $('#toggleFormat').on('click', function(e) {
+
+    var el = $(this);
+
+    currentState = $(this).attr('data-state');
+
+    //match the key and change button state
+    if(buttonState[currentState]) {
+
+      keysArray = Object.keys(buttonState)
+      //debugger;
+      currentIndex = keysArray.indexOf(currentState);
+      //console.log(currentIndex);
+      if(currentIndex <= 2) {
+        if((currentIndex+1) > 2) {
+          newState = keysArray[0];
+        } else {
+          // if current sate is
+          if(currentState === 'hideChords') {
+            $('code.chord').hide();
+          }else {
+            ajaxToggleFormat(currentState);
+          }
+          newState = keysArray[currentIndex+1];
+        }
+        el.attr('data-state', newState);
+        el.html(buttonState[newState]);
+      }
+
+
+    }
+    console.log($('button').data('state'));
+
+  });
 </script>
 
 

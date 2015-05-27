@@ -12,6 +12,11 @@ class SongsController < ApplicationController
     @html = @song.html
   end
 
+  def toggle_format
+    binding.pry
+    @song = Song.find params["id"]
+  end
+
   def new
     render 'songs/conversion'
   end

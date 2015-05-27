@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # -----------------------------
   post 'songs/conversion' => 'songs#chp_html_conversion'
   post 'songs/save' => 'songs#save'
+  post 'songs/show' => 'song#toggle_format'
 
   get '/' => 'songs#index'
 end

@@ -28,11 +28,16 @@ Implementing Chordpro Song File Format into website to generate HTML
   - redirect to song list after saving
 2. Show individual Song
   - style individual song show
+  - create button state & change as it clicks
+    - hide chords
+    - hide lyrics
+    - show both
 
 # work in progress
 2. Show individual Song
   - option to hide lyrics
-  - option to hide chord
+  - ajax call hide lyrics
+
 
 
 

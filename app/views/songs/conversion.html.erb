@@ -49,7 +49,7 @@ For my heart to find
 </main>
 
 <script>
-  var ajax_html_conversion = function (data) {
+  var ajaxHtmlConversion = function (data) {
     $.ajax({
       url: '/songs/conversion',
       method: 'post',
@@ -63,16 +63,18 @@ For my heart to find
       $('#song_title').val(data.song_title);
       $('#song_artist').val(data.song_artist);
 
+    }).fail(function() {
+      console.log("Sorry, conversion failed");
     });
   };
   $(document).ready(function() {
     $content = $('section.pre_conversion textarea').val();
-    ajax_html_conversion($content);
+    ajaxHtmlConversion($content);
   });
 
   $('section.pre_conversion').on('change keyup paste', 'textarea', function() {
     $content = $(this).val();
-    ajax_html_conversion($content);
+    ajaxHtmlConversion($content);
   });
 
 </script>
