@@ -20,6 +20,11 @@ Implementing Chordpro Song File Format into website to generate HTML
     - album:
     - artist:
     - comment: c:
+  - Section wrapper conversion
+    - start_of_chorus, soc
+    - start_of_header, soh
+    - start_of_wrapper, soq
 
+# work in progress
+  - Adding formatted songs into database
 # Wishlist Features
-soc

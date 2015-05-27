@@ -6,27 +6,32 @@
     <!-- <form action="save" method="post"> -->
     <%= form_tag(:action=>'save', :method=>'post', :multipart=>true) do %>
       <textarea name="chordpro" id="" cols="30" rows="10">
-  {t: Bless The Lord}
-  {artist: Matt Redman}
+{soh}
+{t: Bless The Lord}
+{artist: Matt Redman}
+{eoh}
 
-  {comment: Verse 1}
-  The [Bb]sun comes [Gmaj7]up
-  It's a [D#]new day [Em]dawning
-  [C]It's time to [G]sing Your [D]song [Em]again
-  What[C]ever may [G]pass
-  And what[D]ever lies be[Em]fore me
-  [C]Let me be [G]singing ?
-  When the [D]evening [A/F#]comes
+{soc}
+{comment: Verse 1}
+The [Bb]sun comes [Gmaj7]up
+It's a [D#]new day [Em]dawning
+[C]It's time to [G]sing Your [D]song [Em]again
+What[C]ever may [G]pass
+And what[D]ever lies be[Em]fore me
+[C]Let me be [G]singing ?
+When the [D]evening [A/F#]comes
+{eoc}
 
-  {comment: Verse 2}
-  You're rich in love
-  And You're slow to anger
-  Your name is great
-  And Your heart is kind
-  For all Your goodness
-  I will keep on singing
-  Ten thousand reasons
-  For my heart to find
+{comment: Verse 2}
+You're rich in love
+And You're slow to anger
+Your name is great
+And Your heart is kind
+For all Your goodness
+I will keep on singing
+Ten thousand reasons
+For my heart to find
+
       </textarea>
       <!-- <input type="submit" id="addSong" value="Add Song"> -->
       <%= submit_tag "Add Song", id: "submit" %>
