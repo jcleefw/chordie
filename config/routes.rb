@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post 'songs/conversion' => 'songs#chp_html_conversion'
   post 'songs/save' => 'songs#save'
 
-
+  get '/' => 'songs#index'
 end

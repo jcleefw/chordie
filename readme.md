@@ -24,7 +24,13 @@ Implementing Chordpro Song File Format into website to generate HTML
     - start_of_chorus, soc
     - start_of_header, soh
     - start_of_wrapper, soq
+  - Adding formatted songs into database
+  - redirect to song list after saving
+
 
 # work in progress
-  - Adding formatted songs into database
+2. Show individual Song
+  - option to hide lyrics
+  - option to hide chord
+
 # Wishlist Features

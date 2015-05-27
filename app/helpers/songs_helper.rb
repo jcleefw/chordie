@@ -34,13 +34,17 @@ module SongsHelper
     case directive[0]
     when "title", "t"
       title = "title"
+      @title = directive[1]
       return generate_tag title, directive[1], "h1"
     when "subtitle", "st"
       title = "subtitle"
+      @subtitle = directive[1]
       return generate_tag title, directive[1], "h3"
     when "album"
+      @album = directive[1]
       return generate_tag directive[0], directive[1], "h5"
     when "artist"
+      @artist = directive[1]
       return generate_tag directive[0], directive[1], "h5"
     when "comment", "c"
       return generate_comment_tag directive[1], "h2"

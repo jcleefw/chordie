@@ -4,4 +4,22 @@
   top: 25%;
   padding: 0 2rem;
   color: $white;
+  @include span-columns(3);
+}
+
+nav.primary_nav {
+  @include span-columns(9);
+  text-align:right;
+  padding: 0 2rem;
+  color:$white;
+  a{
+    color:inherit;
+    :hover{
+      color:$pastel-light-green;
+    }
+  }
+  li{
+    display:inline-block;
+    padding: 0 1rem;
+  }
 }

@@ -2,12 +2,12 @@ body{
   background-color:$light-gray;
   font-family: "Montserrat", Helvetica, Arial, san-serif;
   margin: 0;
+  @include span-columns(12);
 }
 header{
   height: 50px;
   @include span-columns(12);
   background-color: #47735c;
-  float:none;
 }
 
 .main_container{

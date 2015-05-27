@@ -5,7 +5,7 @@
     <h1>Chord Pro Formats:</h1>
     <!-- <form action="save" method="post"> -->
     <%= form_tag(:action=>'save', :method=>'post', :multipart=>true) do %>
-      <textarea name="chordpro" id="" cols="30" rows="10">
+      <textarea name="song[chordpro]" id="" cols="30" rows="10">
 {soh}
 {t: Bless The Lord}
 {artist: Matt Redman}
@@ -22,6 +22,7 @@ And what[D]ever lies be[Em]fore me
 When the [D]evening [A/F#]comes
 {eoc}
 
+{sow}
 {comment: Verse 2}
 You're rich in love
 And You're slow to anger
@@ -31,9 +32,12 @@ For all Your goodness
 I will keep on singing
 Ten thousand reasons
 For my heart to find
+{eow}
 
       </textarea>
-      <!-- <input type="submit" id="addSong" value="Add Song"> -->
+      <%= hidden_field_tag "song[html]", id:"htmlForm" %>
+      <%= hidden_field_tag "song[title]", id:"songTitle" %>
+      <%= hidden_field_tag "song[artist]", id:"songArtist" %>
       <%= submit_tag "Add Song", id: "submit" %>
     <% end %>
   </section>
@@ -51,12 +55,16 @@ For my heart to find
     $.ajax({
       url: '/songs/conversion',
       method: 'post',
-      dataType: "text",
+      dataType: "json",
       data: { content: $content.trim() }
     }).done(function(data){
       console.log(data);
-      $pre = $('<pre>').append(data);
+      $pre = $('<pre>').append(data.html);
       $('.html_converted').empty().html($pre);
+      $('#song_html').val(data.html);
+      $('#song_title').val(data.song_title);
+      $('#song_artist').val(data.song_artist);
+
     });
   };
   $(document).ready(function() {
