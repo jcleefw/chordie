@@ -7,14 +7,15 @@ class SongsController < ApplicationController
   end
 
   def show
-
     @song = Song.find params["id"]
     @html = @song.html
+    @chordpro = @song_chordpro
   end
 
   def toggle_format
     binding.pry
     @song = Song.find params["id"]
+
   end
 
   def new

@@ -49,8 +49,10 @@
           // if current sate is
           if(currentState === 'hideChords') {
             $('code.chord').hide();
-          }else {
+          }else if(currentState === 'hideLyrics'){
             ajaxToggleFormat(currentState);
+          }else if(currentState === 'both'){
+
           }
           newState = keysArray[currentIndex+1];
         }

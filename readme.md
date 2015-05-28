@@ -32,13 +32,20 @@ Implementing Chordpro Song File Format into website to generate HTML
     - hide chords
     - hide lyrics
     - show both
+3. Unit Testing
+  - Unit testing for directive-html conversion
 
 # work in progress
 2. Show individual Song
   - option to hide lyrics
   - ajax call hide lyrics
-
+3. Unit Testing
+  - Unit testing for chords-html conversion
 
 
 
 # Wishlist Features
+Integration testing
+Transpose song
+
+References

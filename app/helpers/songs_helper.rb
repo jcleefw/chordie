@@ -12,10 +12,10 @@ module SongsHelper
   def directives_to_html directives_found
     #binding.pry
     html=""
-    directives_regex = /[{}]/
     directives_found.each do |directive|
+
       # replace {} for directive
-      trim = directive.gsub(directives_regex, "");
+      trim = remove_chp_directive_wrapper directive
 
       if trim.include? ':'
         # strip of any whitespace from string after split
@@ -23,13 +23,23 @@ module SongsHelper
       else
         trim = trim.split
       end
-      html += directive_switch trim
+      generated_partial_html = directive_switch trim
+
+      if (generated_partial_html =~ /^You gave something/) != 0
+        html += generated_partial_html
+      end
     end
     html
     #binding.pry
   end
 
+  def remove_chp_directive_wrapper chp_content
+    directives_regex = /[{}]/
+    chp_content.gsub(directives_regex, "");
+  end
+
   def directive_switch directive
+
     # according to what directive is parse in generate html
     case directive[0]
     when "title", "t"
@@ -63,7 +73,7 @@ module SongsHelper
     when "end_of_header", "eow"
       return generate_wrapper_tag directive[0], "div", "end"
     else
-      puts "You gave me  -- I have no idea what to do with that."
+      p "You gave something that I have no idea what to do with that."
     end
 
   end
@@ -96,10 +106,5 @@ module SongsHelper
       "</#{wrapper}>"
     end
   end
-
-
-
-
-
 
 end
