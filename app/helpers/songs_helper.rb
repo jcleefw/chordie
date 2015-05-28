@@ -1,12 +1,24 @@
 module SongsHelper
-  def chords_to_html chords_found,line
+  def chords_to_html chords_found,line, state
     html=""
+    new_line = ""
     chords = chords_found.map do |chord|
       # replace [chords] with html codes
-      line = line.gsub("[#{chord[0]}]", "<code class='chord' data-chordname='#{chord[0]}'>#{chord[0]}</code>")
+      if state == "both"
+        line = line.gsub("[#{chord[0]}]", "<code class='chord both' data-chordname='#{chord[0]}'>#{chord[0]}</code>")
+      elsif state == "hideLyrics"
+
+        new_line += "<code class='chord no-lyrics' data-chordname='#{chord[0]}'>#{chord[0]}</code>"
+      end
+      line = new_line
     end
     # add <p> tag around each line
-    html += "<p class='line'>#{line}</p>"
+    #binding.pry
+    if state == "both"
+      html += "<p class='line'>#{line}</p>"
+    elsif state == "hideLyrics"
+      html += "<p class='line hide-lyrics'>#{line}</p>"
+    end
   end
 
   def directives_to_html directives_found

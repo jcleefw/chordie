@@ -21,11 +21,23 @@ pre{
 }
 
 .chord{
-  position: absolute;
-  top:-20px;
   color:rgb(253, 118, 118);
   font-weight: bold;
   font-family:inherit;
+}
+
+.no-lyrics {
+  padding-right: 2rem;
+}
+
+.hide-lyrics {
+  margin: 0;
+  padding: 0;
+}
+
+.both {
+  position: absolute;
+  top:-20px;
 }
 
 .soh, .start-of-header {

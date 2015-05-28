@@ -9,13 +9,9 @@ class SongsController < ApplicationController
   def show
     @song = Song.find params["id"]
     @html = @song.html
-    @chordpro = @song_chordpro
-  end
-
-  def toggle_format
-    binding.pry
-    @song = Song.find params["id"]
-
+    nolyrics = chp_html_conversion({content:@song.chordpro, state:"hideLyrics"})
+    @nolyrics = nolyrics.split(/\r/).join
+    #binding.pry
   end
 
   def new

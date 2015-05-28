@@ -3,9 +3,6 @@
     <%= @html.html_safe %>
   </div>
   <div class="right">
-    <!-- <div class="button">
-      button
-    </div> -->
     <button id="toggleFormat" data-state="hideChords">Hide Chords</button>
   </div>
 
@@ -17,10 +14,10 @@
 
   var ajaxToggleFormat = function(state) {
       $.ajax({
-        url: '/songs/show',
+        url: "/songs/show",
         method: 'post',
-        // dataType: "json",
-        data: { state: currentState }
+        dataType: "json",
+        data: { state: currentState, id: <%= @song.id %> }
       }).done(function(data){
         console.log(data);
 
@@ -34,6 +31,7 @@
     var el = $(this);
 
     currentState = $(this).attr('data-state');
+    $both = $('div.both');
 
     //match the key and change button state
     if(buttonState[currentState]) {
@@ -45,14 +43,17 @@
       if(currentIndex <= 2) {
         if((currentIndex+1) > 2) {
           newState = keysArray[0];
+          $('.left').empty();
+          $('.left').append("<%= @html.html_safe %>");
         } else {
           // if current sate is
           if(currentState === 'hideChords') {
             $('code.chord').hide();
           }else if(currentState === 'hideLyrics'){
-            ajaxToggleFormat(currentState);
-          }else if(currentState === 'both'){
 
+            $('.left').empty();
+            $('.left').append("<%= @nolyrics.html_safe %>");
+            $('p.no-chord').hide();
           }
           newState = keysArray[currentIndex+1];
         }
@@ -62,7 +63,7 @@
 
 
     }
-    console.log($('button').data('state'));
+    console.log($('button').attr('data-state'));
 
   });
 </script>

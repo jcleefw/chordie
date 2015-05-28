@@ -1,6 +1,6 @@
 module SongsUtils
-  def chp_html_conversion
-    if !params["content"].nil?
+  def chp_html_conversion data=""
+    if !params["content"].nil?||!data.empty?
       html = ""
       # Regex to select valid chords. All unvalid chords will remain its original form
       chord_regex = /\[(([A-G]|[ABDEG](♭|b)|[AGCDF](♯|#)?)(maj|min|[Mm+°|])?6?(aug|d[io]m|ø)?7?(\/?((([A-G]|[ABDEG](♭|b)|[AGCDF](♯|#)?)(maj|min|[Mm+°|])?6?(aug|d[io]m|ø)?7?)?)))\]/;
@@ -11,8 +11,12 @@ module SongsUtils
       # Regex to select all section wrapper eg: {soc}
       section_regex = /(\{soc\}(.|\n)*\{eoc\})/
 
-      # strip whitespace, and split to array according to section_regex
-      content = params["content"].strip.split section_regex
+      if !params["content"].nil?
+        # strip whitespace, and split to array according to section_regex
+        content = params["content"].strip.split section_regex
+      elsif !data[:content].empty?
+        content = data[:content].strip.split section_regex
+      end
 
       # Remove all unneccessary \n in array
       content = content.delete_if {|i| i == "\n" }
@@ -37,7 +41,11 @@ module SongsUtils
 
             if chords_found.size > 0
               # convert chords into html
-              html += chords_to_html chords_found,line
+              if !params["content"].nil?
+                html += chords_to_html chords_found,line,"both"
+              elsif !data[:content].empty?
+                html += chords_to_html chords_found,line,data[:state]
+              end
             elsif directives_found.size>0
               #convert directives into html
               html += directives_to_html directives_found
@@ -49,8 +57,15 @@ module SongsUtils
       end # end of section map
       #binding.pry
 
-      # render as json to return to ajax call
-      render :json => {html: html, song_title: @title, song_artist: @artist}
+
+      if !params["content"].nil?
+        # render as json to return to ajax call
+        render :json => {html: html, song_title: @title, song_artist: @artist}
+      elsif !data[:content].empty?
+        html
+      end
+
+
     end
   end
 end
