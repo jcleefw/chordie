@@ -23,6 +23,9 @@ main{
   $visual-grid: true;
   section {
     @include span-columns(6);
+    @include media($tablet) {
+      width: 100%;
+    }
   }
 
   textarea {
@@ -34,6 +37,10 @@ main{
     @include display(flex);
     @include flex-direction(column);
     @include justify-content(flex-start);
+
+    @include media($tablet) {
+      height: 200px;
+    }
   }
 }
 

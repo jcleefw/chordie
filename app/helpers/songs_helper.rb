@@ -9,8 +9,11 @@ module SongsHelper
       elsif state == "hideLyrics"
 
         new_line += "<code class='chord no-lyrics' data-chordname='#{chord[0]}'>#{chord[0]}</code>"
+
       end
-      line = new_line
+      if !new_line.empty?
+        line = new_line
+      end
     end
     # add <p> tag around each line
     #binding.pry
@@ -65,7 +68,7 @@ module SongsHelper
     when "album"
       @album = directive[1]
       return generate_tag directive[0], directive[1], "h5"
-    when "artist"
+    when "artist", "ar"
       @artist = directive[1]
       return generate_tag directive[0], directive[1], "h5"
     when "comment", "c"
