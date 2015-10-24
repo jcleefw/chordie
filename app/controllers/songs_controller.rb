@@ -11,21 +11,33 @@ class SongsController < ApplicationController
     @html = @song.html
     nolyrics = chp_html_conversion({content:@song.chordpro, state:"hideLyrics"})
     @nolyrics = nolyrics.split(/\r/).join
-    #binding.pry
   end
 
   def new
     render 'songs/conversion'
   end
 
-  def save
-    @song = Song.new(get_song_adding_params)
-    @song.save
+  def edit
+    @song = Song.find params["id"]
+    render 'songs/conversion'
+  end
 
-    if @song.save
+  def save
+    if params[:song][:id]
+      song = Song.find params[:song][:id]
+      song.chordpro = params[:song][:chordpro]
+      song.html = params[:song][:html]
+      song.save
       redirect_to songs_path
     else
-      render 'show'
+      @song = Song.new(get_song_adding_params)
+      @song.save
+
+      if @song.save
+        redirect_to songs_path
+      else
+        render 'show'
+      end
     end
   end
 

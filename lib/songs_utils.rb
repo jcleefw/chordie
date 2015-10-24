@@ -1,4 +1,9 @@
 module SongsUtils
+
+  def song
+    @song ||= Song.find params[:id] 
+  end
+  
   def chp_html_conversion data=""
     if !params["content"].nil?||!data.empty?
       html = ""

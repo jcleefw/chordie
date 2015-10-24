@@ -42,7 +42,6 @@ pre{
 
 .soh, .start-of-header {
   color: $dark-purple;
-  //padding: 2rem 0 0;
   .title{
     font-size: 1.8rem;
     text-transform: uppercase;
@@ -69,6 +68,9 @@ pre{
 }
 .no-chord{
   padding:0 0.3125rem;
-  margin:0;
+  margin-bottom:1rem;
+}
+.with-chord{
+  margin: 20px 0 0;
 }
 

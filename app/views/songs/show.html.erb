@@ -49,8 +49,9 @@
           // if current sate is
           if(currentState === 'hideChords') {
             $('code.chord').hide();
+            $('.with-chord').css('margin', 0);
+            $('.no-chord').css('margin', 0);
           }else if(currentState === 'hideLyrics'){
-
             $('.left').empty();
             $('.left').append("<%= @nolyrics.html_safe %>");
             $('p.no-chord').hide();
@@ -63,7 +64,6 @@
 
 
     }
-    console.log($('button').attr('data-state'));
 
   });
 </script>

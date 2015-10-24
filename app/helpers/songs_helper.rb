@@ -18,7 +18,7 @@ module SongsHelper
     # add <p> tag around each line
     #binding.pry
     if state == "both"
-      html += "<p class='line'>#{line}</p>"
+      html += "<p class='line with-chord'>#{line}</p>"
     elsif state == "hideLyrics"
       html += "<p class='line hide-lyrics'>#{line}</p>"
     end

@@ -4,24 +4,17 @@
     <!-- <form action="save" method="post"> -->
     <%= form_tag(:action=>'save', :method=>'post', :multipart=>true) do %>
       <textarea name="song[chordpro]" id="" cols="30" rows="10">
-{soh}
-{t:Heal The World}
-{ar: Michael Jackson}
-{eoh}
-
-{sow}
-{comment:Verse 1}
-There's a [A]place in your [Bm7]heart
-And I [C#m]know that it is [Bm7]love
-Making the [F]most of of people
-{eow}
-
+        <% if @song %>
+          <%= @song.chordpro %>
+        <% end %>
       </textarea>
       <%= hidden_field_tag "song[html]", id:"htmlForm" %>
       <%= hidden_field_tag "song[title]", id:"songTitle" %>
       <%= hidden_field_tag "song[artist]", id:"songArtist" %>
+      <% if @song %><%= hidden_field_tag "song[id]", @song.id %><% end %>
       <%= submit_tag "Add Song", id: "submit" %>
     <% end %>
+    
   </section>
 
   <section class="converted">
